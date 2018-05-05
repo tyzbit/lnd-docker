@@ -24,8 +24,8 @@ RUN apk --no-cache add \
     ca-certificates
 
 # Copy the binaries and entrypoint from the builder image
-COPY --from=builder /go/src/github.com/lightningnetwork/lnd/lncli /bin/
-COPY --from=builder /go/src/github.com/lightningnetwork/lnd/lnd /bin/
+COPY --from=builder /go/src/github.com/lightningnetwork/lnd/lncli-debug /bin/lncli
+COPY --from=builder /go/src/github.com/lightningnetwork/lnd/lnd-debug /bin/lnd
 COPY "docker-entrypoint.sh" .
 
 # Use the script to automatically start lnd
