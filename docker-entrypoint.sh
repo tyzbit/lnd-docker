@@ -25,6 +25,7 @@ cli_opts=( ["LNDDIR"]="--lnddir="
            ["RESTLISTEN"]="--restlisten="
            ["LISTEN"]="--listen="
            ["NOLISTEN"]="--nolisten"
+           ["NAT"]="--nat"
            ["EXTERNALIP"]="--externalip="
            ["DEBUGLEVEL"]="--debuglevel="
            ["CPUPROFILE"]="--cpuprofile="
@@ -37,6 +38,8 @@ cli_opts=( ["LNDDIR"]="--lnddir="
            ["NOBOOTSTRAP"]="--nobootstrap"
            ["NOENCRYPTWALLET"]="--noencryptwallet"
            ["TRICKLEDELAY"]="--trickledelay="
+           ["INACTIVECHANTIMEOUT"]="--inactivechantimeout="
+           ["NOCHANUPDATES"]="--nochanupdates"
            ["ALIAS"]="--alias="
            ["COLOR"]="--color="
            ["MINCHANSIZE"]="--minchansize="
@@ -98,9 +101,16 @@ cli_opts=( ["LNDDIR"]="--lnddir="
            ["AUTOPILOT_ALLOCATION"]="--autopilot.allocation="
            ["AUTOPILOT_MINCHANSIZE"]="--autopilot.minchansize="
            ["AUTOPILOT_MAXCHANSIZE"]="--autopilot.maxchansize="
+           ["AUTOPILOT_PRIVATE"]="--autopilot.private"
+           ["AUTOPILOT_MINCONFS"]="--autopilot.minconfs="
+           ["TOR_ACTIVE"]="--tor.active"
            ["TOR_SOCKS"]="--tor.socks="
            ["TOR_DNS"]="--tor.dns="
-           ["TOR_STREAMISOLATION"]="--tor.streamisolation" )
+           ["TOR_STREAMISOLATION"]="--tor.streamisolation"
+           ["TOR_CONTROL"]="--tor.control="
+           ["TOR_V2"]="--tor.v2"
+           ["TOR_V3"]="--tor.v3"
+           ["TOR_PRIVATEKEYPATH"]="--tor.privatekeypath=" )
 
 CLI_ARGS=('')
 
@@ -121,5 +131,9 @@ add_if_exists() {
 # construct the command-line argument string CLI_ARGS
 for opt in "${!cli_opts[@]}"; do add_if_exists "$opt"; done
 
-# launch LND with the specified options
-exec lnd ${CLI_ARGS[@]} "$@"
+if [ -z ${CONFIG_PATH} ]; then
+  # launch LND with the specified options
+  exec lnd ${CLI_ARGS[@]} "$@"
+else
+  exec lnd --configfile=${CONFIG_PATH}
+fi
