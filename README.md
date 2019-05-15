@@ -1,6 +1,12 @@
 # lnd-docker
-My take on dockerizing LND.  Manually triggered builds from `lnd` master, so
-you use at your own risk (I make every effort to provide stability and integrity)
+My take on dockerizing LND.  
+
+`latest` is manually triggered occasionally (probably weekly or less frequent)
+to build from `lnd` master, which means there might be unsquashed bugs. Use at
+your own risk (I make every effort to provide stability and integrity)
+
+I also create tags for every `lnd` tagged release from Sept 14, 2018 (v0.5-beta)
+onward.
 
 # How to use
 
