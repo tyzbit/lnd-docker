@@ -7,7 +7,6 @@ RUN apk add --no-cache \
     make \
 &&  git clone --branch $VERSION https://github.com/lightningnetwork/lnd /go/src/github.com/lightningnetwork/lnd \
 &&  cd /go/src/github.com/lightningnetwork/lnd \
-&&  go get ./... \
 &&  make \
 &&  make install
 
