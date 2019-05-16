@@ -1,7 +1,7 @@
 # lnd-docker
 My take on dockerizing LND.  
 
-`latest` is manually triggered occasionally (probably weekly or less frequent)
+`latest` is manually triggered (daily at most frequent, but it may vary)
 to build from `lnd` master, which means there might be unsquashed bugs. Use at
 your own risk (I make every effort to provide stability and integrity)
 
