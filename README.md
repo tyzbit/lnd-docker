@@ -38,6 +38,29 @@ $ lncli create
 The critical files for `lnd` will be stored in that directory, which you can save
 or make backups of if you wish.
 
+## Using Environment Variables
+
+If you want to use environment variables, just expose them to the container:
+
+```
+$ docker run -it --name lnd \
+   -v "$PWD":/root/ \
+   -e DEBUGLEVEL=info \
+   -e BITCOIN_ACTIVE=true \
+   -e BITCOIN_MAINNET=true \
+   -e BITCOIN_NODE=bitcoind \
+   -e BITCOIND_RPCHOST=192.168.1.2 \
+   -e BITCOIND_RPCUSER=bitcoin \
+   -e BITCOIND_RPCPASS=bitcoin \
+   -e BITCOIND_ZMQPATH=tcp://192.168.1.2 \
+   -e COLOR=#FF9900 \
+   lnd
+```
+
+A full list of the environment variables you can use is [here](https://github.com/tyzbit/lnd-docker/blob/master/docker-entrypoint.sh#L9).
+
+Please make a Pull Request if you happen to see one that's missing.
+
 ## UnRAID
 
 Add the image with the following settings:
