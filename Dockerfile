@@ -1,11 +1,11 @@
 FROM golang:alpine as builder
-ENV VERSION='master'
+ENV VERSION='new-eob-sphinx-send'
 
 # Install dependencies and build the binaries
 RUN apk add --no-cache \
     git \
     make \
-&&  git clone --branch $VERSION https://github.com/lightningnetwork/lnd /go/src/github.com/lightningnetwork/lnd \
+&&  git clone --branch $VERSION https://github.com/Roasbeef/lnd /go/src/github.com/lightningnetwork/lnd \
 &&  cd /go/src/github.com/lightningnetwork/lnd \
 &&  make \
 &&  make install
