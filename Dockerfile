@@ -3,10 +3,15 @@ ENV VERSION='v0.6.1-beta'
 
 # Install dependencies and build the binaries
 RUN apk add --no-cache \
+    curl \
     git \
+    gnupg \
     make \
 &&  git clone --branch $VERSION https://github.com/lightningnetwork/lnd /go/src/github.com/lightningnetwork/lnd \
 &&  cd /go/src/github.com/lightningnetwork/lnd \
+# Minimal security, trusts that both Keybase & GitHub were not compromised
+&&  curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import \
+&&  git verify-tag $VERSION \
 &&  make \
 &&  make install tags="signrpc walletrpc chainrpc invoicesrpc"
 
