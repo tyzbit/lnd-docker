@@ -5,8 +5,19 @@ My take on dockerizing LND.
 to build from `lnd` master, which means there might be unsquashed bugs. Use at
 your own risk (I make every effort to provide stability and integrity)
 
-I also create tags for every `lnd` tagged release from Sept 14, 2018 (v0.5-beta)
-onward.
+Other Tags:
+
+* `keysend` - roasbeef's keysend branch
+
+* `loop` - LND built with RPCs required for loop
+
+* `routerrpc` - LND built with RPC required to interact with the new routing
+
+* `watchtower` - cfromknecht's branch with watchtower functionality
+
+* `v0.6.1-beta-loop` - `v0.6.1-beta` built with Loop-required RPCs
+
+* `v0.6.1-beta-loop-router` - `v0.6.1-beta` with Loop and new routing RPCs
 
 # How to use
 
