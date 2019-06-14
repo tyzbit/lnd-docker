@@ -1,5 +1,5 @@
 FROM golang:alpine as builder
-ENV VERSION='master'
+ENV VERSION='v0.7.0-beta-rc1'
 
 # Install dependencies and build the binaries
 RUN apk add --no-cache \
