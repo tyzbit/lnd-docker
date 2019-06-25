@@ -1,11 +1,11 @@
 FROM golang:alpine as builder
-ENV VERSION='master'
+ENV VERSION='fwdinghistory_3240'
 
 # Install dependencies and build the binaries
 RUN apk add --no-cache \
     git \
     make \
-&&  git clone --branch $VERSION https://github.com/lightningnetwork/lnd /go/src/github.com/lightningnetwork/lnd \
+&&  git clone --branch $VERSION https://github.com/tyzbit/lnd /go/src/github.com/lightningnetwork/lnd \
 &&  cd /go/src/github.com/lightningnetwork/lnd \
 &&  make \
 &&  make install
