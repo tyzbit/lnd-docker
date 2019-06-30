@@ -8,7 +8,7 @@ RUN apk add --no-cache \
 &&  git clone --branch $VERSION https://github.com/lightningnetwork/lnd /go/src/github.com/lightningnetwork/lnd \
 &&  cd /go/src/github.com/lightningnetwork/lnd \
 &&  make \
-&&  make install
+&&  make install tags="signrpc walletrpc chainrpc invoicesrpc autopilotrpc routerrpc experimental watchtowerrpc"
 
 # Start a new, final image
 FROM alpine as final
