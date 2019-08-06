@@ -1,5 +1,5 @@
 FROM golang:alpine as builder
-ENV VERSION='fwdinghistory_3240'
+ENV VERSION='3357_start-time'
 
 # Install dependencies and build the binaries
 RUN apk add --no-cache \
