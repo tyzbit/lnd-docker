@@ -1,5 +1,5 @@
 FROM golang:alpine as builder
-ENV VERSION='v0.8.2-beta'
+ENV VERSION='v0.9.0-beta'
 
 # Install dependencies and build the binaries
 RUN apk add --no-cache \
